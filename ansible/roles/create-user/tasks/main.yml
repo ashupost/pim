@@ -1,0 +1,23 @@
+---
+- name: Ensure group "somegroup" exists
+  group:
+    name: admin
+    state: present
+
+- name: Add the user 'kumar' with a specific uid and a primary group of 'admin'
+  user:
+    name: kumar
+    comment: kumar
+    shell: /bin/bash
+    expires: -1
+    createhome: yes
+    password: 'mritunjay'
+    uid: 1040
+    group: admin
+
+- name: Allow 'wheel' group to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%admin'
+    line: '%admin ALL=(ALL) NOPASSWD: ALL'

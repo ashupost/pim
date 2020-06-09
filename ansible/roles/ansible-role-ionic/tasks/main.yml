@@ -1,0 +1,22 @@
+---
+- name: Install cordova.
+  npm:
+    name: cordova
+    state: present
+    global: yes
+
+- name: Install Angular CLI.
+  npm:
+    name: "@angular/cli@9.1.7"
+    state: present
+ #   version: 9.1.7
+    global: yes 
+
+
+
+- name: Install cordova.
+  npm:
+    name: ionic
+    state: present
+    version: 'latest'
+    global: yes

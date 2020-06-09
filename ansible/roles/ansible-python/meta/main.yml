@@ -1,0 +1,33 @@
+dependencies:
+- role: ansible-role-repo-epel
+  version: v1.0.9
+galaxy_info:
+  author: Andrew Rothstein
+  company: BlackRock
+  description: python role
+  galaxy_tags:
+  - development
+  - python
+  license:
+  - MIT
+  min_ansible_version: 2.0
+  platforms:
+  - name: EL
+    versions:
+    - all
+  - name: Fedora
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Alpine
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - jessie
+    - stretch
+  - name: Archlinux
+    versions:
+    - all

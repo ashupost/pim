@@ -1,0 +1,7 @@
+
+---
+- git:
+    repo: https://github.com/ashupost/sai.git
+    dest: /home/ec2-user/hello
+    remote: origin
+    version: master
