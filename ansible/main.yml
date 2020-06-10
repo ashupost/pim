@@ -9,7 +9,7 @@
 #    - ansible-python
 #    - ansible-role-pip
 #    - ansible-role-repo-epel
-#    - ansible-role-mariadb
+    - ansible-role-mariadb
 #    - ansible-role-java-open-jdk11
 #    - ansible-role-nodejs
 #    - ansible-role-git
