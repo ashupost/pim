@@ -25,6 +25,7 @@
                         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<bean id="daoFactory" class="com.pim.jdbc.GDDAOHelper"></bean>
+	
 	<bean id="VARCHAR" factory-bean="daoFactory"
 		factory-method="convertType">
 		<constructor-arg value="VARCHAR" />
