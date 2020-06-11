@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @CrossOrigin
     @GetMapping("/employees")
     public List < Employee > getAllEmployees() {
     	Employee e = new Employee();
@@ -36,6 +38,7 @@ public class EmployeeController {
         return employeeRepository.findAll();
     }
 
+    @CrossOrigin
     @GetMapping("/employees/{id}")
     public ResponseEntity < Employee > getEmployeeById(@PathVariable(value = "id") Long employeeId)
     throws ResourceNotFoundException {
@@ -44,6 +47,8 @@ public class EmployeeController {
         return ResponseEntity.ok().body(employee);
     }
 
+    
+    @CrossOrigin
     @PostMapping("/employees")
     public Employee createEmployee(@Valid @RequestBody Employee e) {
     	e = new Employee();
@@ -54,6 +59,7 @@ public class EmployeeController {
         return employeeRepository.save(e);
     }
 
+    @CrossOrigin
     @PutMapping("/employees/{id}")
     public ResponseEntity < Employee > updateEmployee(@PathVariable(value = "id") Long employeeId,
         @Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
@@ -67,6 +73,7 @@ public class EmployeeController {
         return ResponseEntity.ok(updatedEmployee);
     }
 
+    @CrossOrigin
     @DeleteMapping("/employees/{id}")
     public Map < String, Boolean > deleteEmployee(@PathVariable(value = "id") Long employeeId)
     throws ResourceNotFoundException {
