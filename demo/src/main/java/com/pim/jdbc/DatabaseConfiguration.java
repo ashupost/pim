@@ -20,9 +20,9 @@ public class DatabaseConfiguration {
 	public DriverManagerDataSource dataSource() {
 		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
 		driverManagerDataSource.setDriverClassName("org.mariadb.jdbc.Driver");
-		driverManagerDataSource.setUrl("jdbc:mariadb://localhost:3306/mk");
-		driverManagerDataSource.setUsername("root");
-		//driverManagerDataSource.setPassword("mhtsoft1_ground");
+		driverManagerDataSource.setUrl("jdbc:mariadb://pim.ccz7m6lbcb2f.eu-west-1.rds.amazonaws.com:3306/mypimdb");
+		driverManagerDataSource.setUsername("pim");
+		driverManagerDataSource.setPassword("pim1234567890");
 		
 		return driverManagerDataSource;
 	}
