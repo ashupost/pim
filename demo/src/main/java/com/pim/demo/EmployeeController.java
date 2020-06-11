@@ -26,6 +26,13 @@ public class EmployeeController {
 
     @GetMapping("/employees")
     public List < Employee > getAllEmployees() {
+    	Employee e = new Employee();
+    	
+    	 e.setFirstName("Mritunjay");
+    	 e.setLastName("kumar");
+    	 e.setEmailId("help@gmail.com");
+    	 employeeRepository.save(e);
+    	 
         return employeeRepository.findAll();
     }
 
@@ -38,8 +45,13 @@ public class EmployeeController {
     }
 
     @PostMapping("/employees")
-    public Employee createEmployee(@Valid @RequestBody Employee employee) {
-        return employeeRepository.save(employee);
+    public Employee createEmployee(@Valid @RequestBody Employee e) {
+    	e = new Employee();
+    	
+ e.setFirstName("Mritunjay");
+ e.setLastName("kumar");
+ e.setEmailId("help@gmail.com");
+        return employeeRepository.save(e);
     }
 
     @PutMapping("/employees/{id}")
