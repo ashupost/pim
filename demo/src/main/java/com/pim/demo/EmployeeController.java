@@ -30,7 +30,7 @@ public class EmployeeController {
     public List < Employee > getAllEmployees() {
     	Employee e = new Employee();
     	
-    	 e.setFirstName("Mritunjay");
+    	 e.setFirstName("sa");
     	 e.setLastName("kumar");
     	 e.setEmailId("help@gmail.com");
     	 employeeRepository.save(e);

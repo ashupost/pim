@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:security="http://www.springframework.org/schema/security"
-    xmlns:p="http://www.springframework.org/schema/p"
-    xmlns:aop="http://www.springframework.org/schema/aop"
-    xmlns:tx="http://www.springframework.org/schema/tx"
-    xmlns:util="http://www.springframework.org/schema/util"
-    xmlns:jms="http://www.springframework.org/schema/jms"
-    xmlns:lang="http://www.springframework.org/schema/lang"
-    xmlns:tool="http://www.springframework.org/schema/tool" 
-    xmlns:jee="http://www.springframework.org/schema/jee"
-    xmlns:mvc="http://www.springframework.org/schema/mvc" 
-    xmlns:context="http://www.springframework.org/schema/context"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:tool="http://www.springframework.org/schema/tool"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
                         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
                         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
@@ -23,41 +23,44 @@
                         http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.0.xsd
                         http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool-3.0.xsd
                         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-      
-   <bean id="daoFactory" class="com.pim.jdbc.GDDAOHelper"></bean>
-   <bean id="VARCHAR" factory-bean="daoFactory" factory-method="convertType">
+
+	<bean id="daoFactory" class="com.pim.jdbc.GDDAOHelper"></bean>
+	<bean id="VARCHAR" factory-bean="daoFactory"
+		factory-method="convertType">
 		<constructor-arg value="VARCHAR" />
 	</bean>
-	
+
 	<bean id="loginJDBCListDS" class="com.pim.jdbc.LoginJDBCListDS">
-		<property name="bipBatchGenericDAO" ref="loginJDBCListDS.Param" />
+		<property name="bipBatchGenericDAO"
+			ref="loginJDBCListDS.Param" />
 	</bean>
-	  
-	  
-	    <bean id="loginJDBCListDS.Param" class="com.pim.jdbc.GDSimpleJdbcCallImpl">
+
+
+	<bean id="loginJDBCListDS.Param"
+		class="com.pim.jdbc.GDSimpleJdbcCallImpl">
 		<constructor-arg index="0" ref="dataSource" />
 		<constructor-arg index="1" value="userlogin1" />
 		<constructor-arg index="2">
 			<list>
-			     <ref bean="PRODUCT_ID"/>
-		    </list>
+				<ref bean="PRODUCT_ID" />
+			</list>
 		</constructor-arg>
 		<constructor-arg index="3" value="loginResultSet" />
 		<constructor-arg index="4" ref="actorRowMapper"></constructor-arg>
-	  </bean>
-	
-	<bean id="PRODUCT_ID" class="org.springframework.jdbc.core.SqlParameter">
-			<constructor-arg value="PRODUCT_ID" />
-			<constructor-arg ref="INTEGER" />
-			<constructor-arg value="INTEGER" />
 	</bean>
-	
-	 <bean id="INTEGER" factory-bean="daoFactory" factory-method="convertType">
+
+	<bean id="PRODUCT_ID"
+		class="org.springframework.jdbc.core.SqlParameter">
+		<constructor-arg value="PRODUCT_ID" />
+		<constructor-arg ref="INTEGER" />
 		<constructor-arg value="INTEGER" />
 	</bean>
-	
-	<bean id="actorRowMapper"  class="com.pim.jdbc.ActorRowMapper" />
-	<!-- 
-	<bean id="exportsJDBC_BS" class="com.ground.service.database.jdbc.ExportsJDBC_BS"/>
-     --> 
+
+	<bean id="INTEGER" factory-bean="daoFactory"
+		factory-method="convertType">
+		<constructor-arg value="INTEGER" />
+	</bean>
+
+	<bean id="actorRowMapper" class="com.pim.jdbc.ActorRowMapper" />
+	<!-- <bean id="exportsJDBC_BS" class="com.ground.service.database.jdbc.ExportsJDBC_BS"/> -->
 </beans>
