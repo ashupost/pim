@@ -5,22 +5,22 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
-export interface Config {
+export interface Employee {
   id: number;
-  type: string;
-  setup: string;
-  punchline: string;
+  firstName: string;
+  lastName: string;
+  emailId: string;
 }
 
 @Injectable()
 export class ConfigService {
   //configUrl = 'assets/config.json';
-  configUrl = 'https://official-joke-api.appspot.com/jokes/programming/random';
+  configUrl = 'http://52.49.62.66:8080/api/v1/employees';
 
   constructor(private http: HttpClient) { }
 
   getConfig() {
-    return this.http.get<Config[]>(this.configUrl)
+    return this.http.get<Employee[]>(this.configUrl)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -33,18 +33,18 @@ export class ConfigService {
 
   getConfig_2() {
     // now returns an Observable of Config
-    return this.http.get<Config>(this.configUrl);
+    return this.http.get<Employee>(this.configUrl);
   }
 
   getConfig_3() {
-    return this.http.get<Config>(this.configUrl)
+    return this.http.get<Employee>(this.configUrl)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  getConfigResponse(): Observable<HttpResponse<Config[]>> {
-    return this.http.get<Config[]>(
+  getConfigResponse(): Observable<HttpResponse<Employee[]>> {
+    return this.http.get<Employee[]>(
       this.configUrl, { observe: 'response' });
   }
 
@@ -73,9 +73,3 @@ export class ConfigService {
 
 }
 
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
