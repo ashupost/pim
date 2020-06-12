@@ -4,16 +4,16 @@
   roles:
     - create-user
 #    - my-code
-#    - ansible-role-ionic
+    - ansible-role-nodejs
+    - ansible-role-ionic
 #    - ansible-role-ansible
 #    - ansible-python
 #    - ansible-role-pip
 #    - ansible-role-repo-epel
-    - ansible-role-mariadb
-#    - ansible-role-java-open-jdk11
-#    - ansible-role-nodejs
+#    - ansible-role-mariadb
+    - ansible-role-java-open-jdk11
 #    - ansible-role-git
-##    - ansible-role-jenkins
+    - ansible-role-jenkins
 #   - tomcat-ansible-role
 #    - ansible-role-packer
 #    - ansible-role-ntp
