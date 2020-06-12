@@ -20,8 +20,9 @@ jenkins_url_prefix: ""
 jenkins_java_options: "-Xmx2048m -XX:MaxPermSize=512m -Djenkins.install.runSetupWizard=false -Djava.awt.headless=true"
 
 # Plugin list can use the plugin name, or a name/version dict.
-jenkins_plugins: []
-#  - blueocean
+jenkins_plugins:
+    - blueocean
+    - git
 #  - name: influxdb
 #    version: "1.12.1"
 
