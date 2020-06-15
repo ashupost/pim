@@ -18,15 +18,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pim.jdbc.ExportsIPBean;
+import com.pim.jdbc.GDException;
+import com.pim.jdbc.ResultBean;
+import com.pim.service.ExportService;
+
 @RestController
 @RequestMapping("/api/v1")
 public class EmployeeController {
 	@Autowired
 	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private ExportService exportService;
 
 	@CrossOrigin
 	@GetMapping("/employees")
-	public List<Employee> getAllEmployees() {
+	public List<Employee> getAllEmployees() throws GDException {
+		
+		System.out.println("Hellooooooooooooo");
+		ExportsIPBean bean = new ExportsIPBean();
+		bean.setExportReqtId("1");
+		System.out.println("KKKKK="+exportService);
+		ResultBean res = exportService.getLoginList(bean);
+		
 		Employee e = new Employee();
 
 		e.setFirstName("sa");
