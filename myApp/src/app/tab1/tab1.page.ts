@@ -4,6 +4,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs';
 import { UserDetails, UserStatus } from '../services/userdetails';
 import { FaceBookLoginService } from '../services/facebook-login.service';
+import { ModalController } from '@ionic/angular';
+import { ModalPage } from 'src/pages/modal/modal';
 
 
 @Component({
@@ -17,6 +19,7 @@ export class Tab1Page {
 
 
   constructor(private __afAuth: AngularFireAuth,
+    private __modalCtrl: ModalController,
     private __googleLoginService: GoogleLoginService,
     private __faceBookLoginService: FaceBookLoginService) {
 
@@ -35,7 +38,18 @@ export class Tab1Page {
       }
     });
     }
+    public  async phonelogin() {
+      let modalPage = await  this.__modalCtrl.create({ component: ModalPage,
+        componentProps: { message: '31616692719' },
+        cssClass: '' });
+        await modalPage.present();
 
+      //let profileModal = this.__modalCtrl.create(ModalPage);
+   //profileModal.present();
+      //const modalPage = this.__modalCtrl.create('ModalPage', { message: 'test' });
+      //modalPage.present();
+    }
+    
     googlePlusLogin() {
       this.__googleLoginService.googlePlusLogin();
     }
@@ -45,5 +59,8 @@ export class Tab1Page {
     signOut() {
       this.__afAuth.auth.signOut();
     }
+
+    
+
 
 }

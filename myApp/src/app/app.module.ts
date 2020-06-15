@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 import { FaceBookLoginService } from './services/facebook-login.service';
+import { ModalPageModule } from 'src/pages/modal/modal.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +29,9 @@ import { FaceBookLoginService } from './services/facebook-login.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ModalPageModule
+    
   ],
   providers: [
     StatusBar,

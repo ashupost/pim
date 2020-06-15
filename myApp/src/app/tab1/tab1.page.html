@@ -54,10 +54,7 @@
       <ion-label>Card Button Item 1 activated</ion-label>
     </ion-item>
   
-    <ion-item>
-      <ion-icon name="walk" slot="start"></ion-icon>
-      <ion-label>Card Button Item 2</ion-label>
-    </ion-item>
+  
   </ion-card>
 
   <p>
@@ -70,5 +67,11 @@
     <button ion-button icon-start round color="secondary" full (click)="facebookLogin()">
       <ion-icon name='logo-facebook'></ion-icon>
       Login with Facebook</button>
+  </p>
+
+  <p>
+    <button ion-button icon-start round full (click)="phonelogin()">
+      <ion-icon name='phone-portrait'></ion-icon>
+      Phone Login</button>
   </p>
 </ion-content>
