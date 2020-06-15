@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -12,8 +13,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 
-//@EnableAutoConfiguration(exclude = { SecurityAutoConfiguration.class })
-@ComponentScan({ "com.pim.service" })
+@EnableAutoConfiguration(exclude = { SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class })
+
+@ComponentScan({ "com.pim.service", "com.pim.demo", "com.pim.jdbc" })
 
 @SpringBootApplication
 public class DemoApplication {

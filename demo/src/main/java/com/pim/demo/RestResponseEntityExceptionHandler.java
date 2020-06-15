@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.pim.jdbc.GDException;
+
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-	@ExceptionHandler(value = { IllegalArgumentException.class, IllegalStateException.class })
+	@ExceptionHandler(value = { IllegalArgumentException.class, IllegalStateException.class, GDException.class })
 	protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest request) {
 
 		HttpHeaders httpHeaders = new HttpHeaders();

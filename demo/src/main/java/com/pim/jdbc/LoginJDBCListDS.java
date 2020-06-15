@@ -17,17 +17,21 @@ public class LoginJDBCListDS extends GDJDBCAbstractDataService {
 		final String METHOD_NAME = "execute";
 		@SuppressWarnings("unused")
 		ExportsIPBean exportsInputValueBean = null;
-		ExportsOPBean exportsOutputValueBean = null;
+		ResultBean exportsOutputValueBean = null;
 		// GDTransactionManager bipTransactionManager = (GDTransactionManager)
 		// GDApplicationContextManager.getBean("gdTxManager");
 		gdTxManager.createTransaction(inputBean.getTxnStatusMap());
 
 		try {
 			exportsInputValueBean = (ExportsIPBean) inputBean;
-			Map<String, ?> inputMap = new HashMap<String, Object>(0);
+			Map<String, Object> inputMap = new HashMap<String, Object>(0);
+			
+			inputMap.put("PRODUCT_ID", "1");
+			
 			Map<String, ?> outputMap = bipBatchGenericDAO.execute(inputMap);
-			exportsOutputValueBean = new ExportsOPBean();
-			exportsOutputValueBean.setExportsOPBeanList((List<?>) outputMap.get(bipBatchGenericDAO.getReturnResultSet()));
+			exportsOutputValueBean = new ResultBean();
+			exportsOutputValueBean.setResult(ResultStatus.SUCCESS);
+			exportsOutputValueBean.setResultList((List<?>) outputMap.get(bipBatchGenericDAO.getReturnResultSet()));
 			gdTxManager.commitTransaction(inputBean.getTxnStatusMap());
 		} catch (DataAccessException bipDae) {
 			gdTxManager.rollbackTransaction(inputBean.getTxnStatusMap());

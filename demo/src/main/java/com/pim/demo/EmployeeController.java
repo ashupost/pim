@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pim.jdbc.ExportsIPBean;
 import com.pim.jdbc.GDException;
+import com.pim.jdbc.ResultBean;
 import com.pim.service.ExportService;
 
 @RestController
@@ -33,14 +35,14 @@ public class EmployeeController {
 	private ExportService exportService;
 
 	@CrossOrigin
-	@GetMapping("/employees")
-	public List<Employee> getAllEmployees() throws GDException {
+	@GetMapping(path="/employees", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResultBean getAllEmployees() throws GDException {
 		
 		System.out.println("Hellooooooooooooo");
 		ExportsIPBean bean = new ExportsIPBean();
 		bean.setExportReqtId("1");
 		System.out.println("KKKKK="+exportService);
-		//ResultBean res = exportService.getLoginList(bean);
+		ResultBean res = exportService.getLoginList(bean);
 		
 		Employee e = new Employee();
 
@@ -49,11 +51,11 @@ public class EmployeeController {
 		e.setEmailId("help@gmail.com");
 		employeeRepository.save(e);
 
-		return employeeRepository.findAll();
+		return res;
 	}
 
 	@CrossOrigin
-	@GetMapping("/employees/{id}")
+	@GetMapping(path="/employees/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
 			throws ResourceNotFoundException {
 		Employee employee = employeeRepository.findById(employeeId)
