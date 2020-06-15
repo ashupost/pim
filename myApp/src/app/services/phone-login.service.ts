@@ -17,10 +17,11 @@ export class PhoneLoginService {
 
 
    signInPhone(phoneNumber: string, recaptchaVerifier: firebase.auth.RecaptchaVerifier) {
+    alert(phoneNumber);
     var applicationVerifier = new firebase.auth.RecaptchaVerifier(
       'recaptcha-container');
   var provider = new firebase.auth.PhoneAuthProvider();
-  provider.verifyPhoneNumber('+31616692719', applicationVerifier)
+  provider.verifyPhoneNumber(phoneNumber, applicationVerifier)
       .then(function(verificationId) {
         var verificationCode = window.prompt('Please enter the verification ' +
             'code that was sent to your mobile device.');
