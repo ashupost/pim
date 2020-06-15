@@ -40,7 +40,7 @@
 	<bean id="loginJDBCListDS.Param"
 		class="com.pim.jdbc.GDSimpleJdbcCallImpl">
 		<constructor-arg index="0" ref="dataSource" />
-		<constructor-arg index="1" value="userlogin1" />
+		<constructor-arg index="1" value="simpleproc" />
 		<constructor-arg index="2">
 			<list>
 				<ref bean="PRODUCT_ID" />

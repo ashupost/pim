@@ -20,12 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pim.jdbc.ExportsIPBean;
 import com.pim.jdbc.GDException;
-import com.pim.jdbc.ResultBean;
 import com.pim.service.ExportService;
 
 @RestController
 @RequestMapping("/api/v1")
 public class EmployeeController {
+	
 	@Autowired
 	private EmployeeRepository employeeRepository;
 	
@@ -40,7 +40,7 @@ public class EmployeeController {
 		ExportsIPBean bean = new ExportsIPBean();
 		bean.setExportReqtId("1");
 		System.out.println("KKKKK="+exportService);
-		ResultBean res = exportService.getLoginList(bean);
+		//ResultBean res = exportService.getLoginList(bean);
 		
 		Employee e = new Employee();
 

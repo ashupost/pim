@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 
-@EnableAutoConfiguration(exclude = { SecurityAutoConfiguration.class })
-@ComponentScan({ "com.database", "com.example", "com.pim.service" })
+//@EnableAutoConfiguration(exclude = { SecurityAutoConfiguration.class })
+@ComponentScan({ "com.pim.service" })
 
 @SpringBootApplication
 public class DemoApplication {
@@ -31,7 +31,7 @@ public class DemoApplication {
 			String[] beanNames = ctx.getBeanDefinitionNames();
 			Arrays.sort(beanNames);
 			for (String beanName : beanNames) {
-				//System.out.println(beanName);
+				System.out.println(beanName);
 			}
 
 		};
