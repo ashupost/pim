@@ -5,7 +5,7 @@ import { ConfigService, Employee, Result } from '../services/config.service';
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss'],
-  providers: [ ConfigService ],
+  providers: [ConfigService],
   styles: ['.error {color: red;}']
 })
 export class Tab3Page {
@@ -14,7 +14,7 @@ export class Tab3Page {
   headers: string[];
   config: Result;
 
-  constructor(private configService: ConfigService) {}
+  constructor(private configService: ConfigService) { }
 
   clear() {
     this.config = undefined;
@@ -27,19 +27,19 @@ export class Tab3Page {
       .subscribe(
         (data: Result) => this.config = { ...data }, // success path
         error => this.error = error// error path
-        
+
       );
-      
+
   }
 
   showConfig_v1() {
     this.configService.getConfig_1()
       .subscribe((data: Result) => this.config = {
-          error: data['error'],
-          employees:  data['resultMap']['loginResultSet1']
+        error: data['error'],
+        employees: data['resultMap']['loginResultSet1']
       });
   }
-  
+
 
   showConfig_v2() {
     this.configService.getConfig()
@@ -57,11 +57,11 @@ export class Tab3Page {
           `${key}: ${resp.headers.get(key)}`);
 
         // access the body directly, which is typed as `Config`.
-        this.config = { ... resp.body };
+        this.config = { ...resp.body };
       });
   }
   makeError() {
-    this.configService.makeIntentionalError().subscribe(null, error => this.error = error );
+    this.configService.makeIntentionalError().subscribe(null, error => this.error = error);
   }
 
 }

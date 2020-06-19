@@ -1,6 +1,4 @@
 // import core firebase client (required)
-import firebase from '@firebase/app';
-
 // import Firebase Authentication (optional)
 import '@firebase/auth';
 
@@ -9,6 +7,9 @@ import '@firebase/database';
 
 // import Cloud Firestore (optional)
 import '@firebase/firestore';
+
+import * as firebase from 'firebase';
+
 
 export interface PageInterface {
     title: string;
