@@ -32,7 +32,7 @@ public class GDSimpleJdbcCallImpl extends SimpleJdbcCall {
 		super.setFunction(false);
 		super.withProcedureName(spName);
 		setReturnResultSet(returnResultSet);
-		final String information = "SP["+ spName +"]  paramList = " + getInParameterNames();
+		final String information = "SP[" + spName + "]  paramList = " + getInParameterNames();
 		logger.debug(information);
 		// logger.info(information);
 		// System.out.println(information);
@@ -49,32 +49,29 @@ public class GDSimpleJdbcCallImpl extends SimpleJdbcCall {
 		super.checkCompiled();
 	}
 
-	public GDSimpleJdbcCallImpl(DataSource dataSource, String spName, List<?> paramList, Map<String, RowMapper<?>> maprowmapper) {
+	public GDSimpleJdbcCallImpl(DataSource dataSource, String spName, List<?> paramList,
+			Map<String, RowMapper<?>> maprowmapper) {
 
 		super(dataSource);
 		super.setFunction(false);
 		super.withProcedureName(spName);
-		//super.returningResultSet(returnResultSet, rowMapper);
-		//super.withoutProcedureColumnMetaDataAccess();
+		// super.returningResultSet(returnResultSet, rowMapper);
 		setReturnResultSet(returnResultSet);
-		//super.addDeclaredRowMapper(returnResultSet, rowMapper);
+		// super.addDeclaredRowMapper(returnResultSet, rowMapper);
 
-		 for (Map.Entry<String, RowMapper<?>> entry : maprowmapper.entrySet()) {
-			 super.addDeclaredRowMapper(entry.getKey(), entry.getValue());
-		 }
+		for (Map.Entry<String, RowMapper<?>> entry : maprowmapper.entrySet()) {
+			super.addDeclaredRowMapper(entry.getKey(), entry.getValue());
+		}
 
-		// logger.info(information);
-		// System.out.println(information); 
-		  // setSql(spName);
+		// setSql(spName);
 		// Iterate through parameter list to declare input and output parameters
 		// required by this Stored Procedure
 		int paramListSize = paramList.size();
 		for (int i = 0; i < paramListSize; i++) {
-			// declareParameter((SqlParameter) paramList.get(i));
-			// declareParameters((SqlParameter) paramList.get(i));
 			super.addDeclaredParameter((SqlParameter) paramList.get(i));
 		}
-		final String information = "SP["+ spName +"],  paramList=" + getInParameterNames() + ", maprowmapper["+ maprowmapper +"]";
+		final String information = "SP[" + spName + "],  paramList=" + getInParameterNames() + ", maprowmapper["
+				+ maprowmapper + "]";
 		logger.info(information);
 
 		super.checkCompiled();
@@ -82,17 +79,16 @@ public class GDSimpleJdbcCallImpl extends SimpleJdbcCall {
 
 	/**
 	 * Execute the stored procedure. Subclasses should define a strongly typed
-	 * execute method (with a meaningful name) that invokes this method,
-	 * populating the input map and extracting typed values from the output map.
-	 * Subclass execute methods will often take domain objects as arguments and
-	 * return values. Alternatively, they can return void.
+	 * execute method (with a meaningful name) that invokes this method, populating
+	 * the input map and extracting typed values from the output map. Subclass
+	 * execute methods will often take domain objects as arguments and return
+	 * values. Alternatively, they can return void.
 	 * 
-	 * @param inParams
-	 *            map of input parameters, keyed by name as in parameter
-	 *            declarations. Output parameters need not (but can be) included
-	 *            in this map. It is legal for map entries to be
-	 *            <code>null, and this will produce the
-	 * correct behavior using a NULL argument to the stored procedure.
+	 * @param inParams map of input parameters, keyed by name as in parameter
+	 *                 declarations. Output parameters need not (but can be)
+	 *                 included in this map. It is legal for map entries to be
+	 *                 <code>null, and this will produce the correct behavior using
+	 *                 a NULL argument to the stored procedure.
 	 * @return map of output params, keyed by name as in parameter declarations.
 	 *         Output parameters will appear here, with their values after the
 	 *         stored procedure has been called.
