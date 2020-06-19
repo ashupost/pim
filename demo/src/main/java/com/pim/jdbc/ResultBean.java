@@ -1,19 +1,20 @@
 package com.pim.jdbc;
 
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 
 
-public class ResultBean extends GDValueBean {
+public class ResultBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Integer status;
 	private boolean error;
-	private List<?> resultList;
 	private ResultStatus result;
 	private Map<String, Object> resultMap;
+	private List<?> resultList;
 	
 	
 

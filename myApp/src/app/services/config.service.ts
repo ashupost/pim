@@ -6,21 +6,26 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 export interface Employee {
+  
   id: number;
-  firstName: string;
-  lastName: string;
-  emailId: string;
+  first_name: string;
+  last_name: string;
+  
+}
+export interface Result {
+  error: boolean;
+  employees:  Employee[]; 
 }
 
 @Injectable()
 export class ConfigService {
   //configUrl = 'assets/config.json';
-  configUrl = 'http://52.49.62.66:8080/api/v1/employees';
+  configUrl = 'http://localhost:8080/api/v1/employees';
 
   constructor(private http: HttpClient) { }
 
   getConfig() {
-    return this.http.get<Employee[]>(this.configUrl)
+    return this.http.get<Result>(this.configUrl)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -43,8 +48,8 @@ export class ConfigService {
       );
   }
 
-  getConfigResponse(): Observable<HttpResponse<Employee[]>> {
-    return this.http.get<Employee[]>(
+  getConfigResponse(): Observable<HttpResponse<Result>> {
+    return this.http.get<Result>(
       this.configUrl, { observe: 'response' });
   }
 

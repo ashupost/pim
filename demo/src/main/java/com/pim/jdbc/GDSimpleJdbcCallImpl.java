@@ -49,7 +49,7 @@ public class GDSimpleJdbcCallImpl extends SimpleJdbcCall {
 		super.checkCompiled();
 	}
 
-	public GDSimpleJdbcCallImpl(DataSource dataSource, String spName, List<?> paramList, String returnResultSet, RowMapper<?> rowMapper) {
+	public GDSimpleJdbcCallImpl(DataSource dataSource, String spName, List<?> paramList, Map<String, RowMapper<?>> maprowmapper) {
 
 		super(dataSource);
 		super.setFunction(false);
@@ -57,7 +57,15 @@ public class GDSimpleJdbcCallImpl extends SimpleJdbcCall {
 		//super.returningResultSet(returnResultSet, rowMapper);
 		//super.withoutProcedureColumnMetaDataAccess();
 		setReturnResultSet(returnResultSet);
-		super.addDeclaredRowMapper(returnResultSet, rowMapper);
+		//super.addDeclaredRowMapper(returnResultSet, rowMapper);
+		
+		 
+		
+		 for (Map.Entry<String, RowMapper<?>> entry : maprowmapper.entrySet()) {
+			 super.addDeclaredRowMapper(entry.getKey(), entry.getValue());
+		 }
+	           
+		
 		final String information = "SP["+ spName +"]  paramList = " + getInParameterNames();
 		logger.debug(information);
 		// logger.info(information);

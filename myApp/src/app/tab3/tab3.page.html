@@ -20,7 +20,7 @@
   <button (click)="clear()">clear</button>
   <button (click)="clear(); makeError()">error</button>
   <span *ngIf="config">
-    <p>Textfile URL is {{config | json}} : "{{config.type}}"</p>
+    <p>Textfile URL is {{config | json}}"</p>
     <div *ngIf="headers">
       Response headers:
       <ul>

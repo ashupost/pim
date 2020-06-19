@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ConfigService, Employee } from '../services/config.service';
+import { ConfigService, Employee, Result } from '../services/config.service';
 
 @Component({
   selector: 'app-tab3',
@@ -12,7 +12,7 @@ export class Tab3Page {
 
   error: any;
   headers: string[];
-  config: Employee[];
+  config: Result;
 
   constructor(private configService: ConfigService) {}
 
@@ -25,28 +25,26 @@ export class Tab3Page {
   showConfig() {
     this.configService.getConfig()
       .subscribe(
-        (data: Employee[]) => this.config = { ...data }, // success path
+        (data: Result) => this.config = { ...data }, // success path
         error => this.error = error// error path
         
       );
       
   }
-/*
+
   showConfig_v1() {
     this.configService.getConfig_1()
-      .subscribe((data: Employee) => this.config = {
-          id: data['id'],
-          type:  data['type'],
-          punchline:  data['punchline'],
-          setup:  data['setup']
+      .subscribe((data: Result) => this.config = {
+          error: data['error'],
+          employees:  data['resultList']
       });
   }
-  */
+  
 
   showConfig_v2() {
     this.configService.getConfig()
       // clone the data object, using its known Config shape
-      .subscribe((data: Employee[]) => this.config = { ...data });
+      .subscribe((data: Result) => this.config = { ...data });
   }
 
   showConfigResponse() {

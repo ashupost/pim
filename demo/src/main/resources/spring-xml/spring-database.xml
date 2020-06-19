@@ -25,7 +25,7 @@
                         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<bean id="daoFactory" class="com.pim.jdbc.GDDAOHelper"></bean>
-	
+
 	<bean id="VARCHAR" factory-bean="daoFactory"
 		factory-method="convertType">
 		<constructor-arg value="VARCHAR" />
@@ -46,13 +46,14 @@
 				<ref bean="PRODUCT_ID" />
 			</list>
 		</constructor-arg>
-		<constructor-arg index="3" value="loginResultSet" />
-		
-		<constructor-arg index="4" ref="actorRowMapper"></constructor-arg>
-		 
+		<constructor-arg index="3">
+			<util:map key-type="java.lang.String"
+				value-type="org.springframework.jdbc.core.RowMapper">
+				<entry key="loginResultSet" value-ref="actorRowMapper"></entry>
+				<entry key="loginResultSet1" value-ref="actorRowMapper"></entry>
+			</util:map>
+		</constructor-arg>
 	</bean>
-	
-	
 
 	<bean id="PRODUCT_ID"
 		class="org.springframework.jdbc.core.SqlParameter">
