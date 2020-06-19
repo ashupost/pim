@@ -54,9 +54,10 @@ public class GDSimpleJdbcCallImpl extends SimpleJdbcCall {
 		super(dataSource);
 		super.setFunction(false);
 		super.withProcedureName(spName);
-		super.returningResultSet(returnResultSet, rowMapper);
+		//super.returningResultSet(returnResultSet, rowMapper);
 		//super.withoutProcedureColumnMetaDataAccess();
 		setReturnResultSet(returnResultSet);
+		super.addDeclaredRowMapper(returnResultSet, rowMapper);
 		final String information = "SP["+ spName +"]  paramList = " + getInParameterNames();
 		logger.debug(information);
 		// logger.info(information);
