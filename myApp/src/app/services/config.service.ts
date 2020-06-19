@@ -17,7 +17,9 @@ export interface Result {
   employees:  Employee[]; 
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ConfigService {
   //configUrl = 'assets/config.json';
   configUrl = 'http://localhost:8080/api/v1/employees';

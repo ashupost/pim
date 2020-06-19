@@ -15,7 +15,9 @@ import {
     SettingUser, Message
 } from './userdetails';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class GroundFirebaseStoreService {
     constructor(private __zone: NgZone,
         private __afs: AngularFirestore
@@ -42,7 +44,7 @@ export class GroundFirebaseStoreService {
                     });
                 }))));
     }
-    
+
     removePhotoByUID(userId: string, uid: string) {
         this.__zone.run(() => {
             this.__afs.collection<PictureDetail>('photos')

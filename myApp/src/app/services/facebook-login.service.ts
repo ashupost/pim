@@ -9,7 +9,9 @@ const { FacebookLogin } = Plugins;
 
 const FACEBOOK_PERMISSIONS = ['email', 'user_birthday', 'user_photos', 'user_gender'];
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class FaceBookLoginService {
     
     constructor(
