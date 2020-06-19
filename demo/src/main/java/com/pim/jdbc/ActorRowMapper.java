@@ -9,9 +9,9 @@ public class ActorRowMapper implements RowMapper<Actor> {
 
 	public Actor mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Actor actor = new Actor();
-		actor.setLoginid(rs.getString(1));
-		actor.setPassword(rs.getString(2));
-		actor.setEmail(rs.getString(3));
+		actor.setId(rs.getString(1));
+		actor.setLast_name(rs.getString(2));
+		actor.setFirst_name(rs.getString(3));
 		return actor;
 	}
 

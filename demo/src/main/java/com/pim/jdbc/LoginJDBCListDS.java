@@ -28,10 +28,15 @@ public class LoginJDBCListDS extends GDJDBCAbstractDataService {
 			
 			inputMap.put("PRODUCT_ID", "1");
 			
-			Map<String, ?> outputMap = bipBatchGenericDAO.execute(inputMap);
+			Map<String, Object> outputMap = bipBatchGenericDAO.execute(inputMap);
+			Object o = outputMap.get("RESULT");
+			System.out.println("ooo="+ o);
+			
 			exportsOutputValueBean = new ResultBean();
 			exportsOutputValueBean.setResult(ResultStatus.SUCCESS);
 			exportsOutputValueBean.setResultList((List<?>) outputMap.get(bipBatchGenericDAO.getReturnResultSet()));
+			exportsOutputValueBean.setResultMap(outputMap);
+			
 			gdTxManager.commitTransaction(inputBean.getTxnStatusMap());
 		} catch (DataAccessException bipDae) {
 			gdTxManager.rollbackTransaction(inputBean.getTxnStatusMap());

@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 
 public class GDUtil {
 
-	private final static String CLASS_NAME = "com.ground.common.util.GDUtil";
+	//private final static String CLASS_NAME = "com.ground.common.util.GDUtil";
 	private final static Logger logger = LoggerFactory.getLogger("com.ground.common.util.GDUtil");
 
 	public static Map<String, String> productStatusMap;

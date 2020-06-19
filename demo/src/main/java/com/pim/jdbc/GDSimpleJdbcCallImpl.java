@@ -32,9 +32,8 @@ public class GDSimpleJdbcCallImpl extends SimpleJdbcCall {
 		super.setFunction(false);
 		super.withProcedureName(spName);
 		setReturnResultSet(returnResultSet);
-		// final String information = "SP["+ spName +"]  paramList = " +
-		// getInParameterNames();
-		// logger.debug(information);
+		final String information = "SP["+ spName +"]  paramList = " + getInParameterNames();
+		logger.debug(information);
 		// logger.info(information);
 		// System.out.println(information);
 
@@ -56,13 +55,13 @@ public class GDSimpleJdbcCallImpl extends SimpleJdbcCall {
 		super.setFunction(false);
 		super.withProcedureName(spName);
 		super.returningResultSet(returnResultSet, rowMapper);
+		//super.withoutProcedureColumnMetaDataAccess();
 		setReturnResultSet(returnResultSet);
-		// final String information = "SP["+ spName +"]  paramList = " +
-		// getInParameterNames();
-		// logger.debug(information);
+		final String information = "SP["+ spName +"]  paramList = " + getInParameterNames();
+		logger.debug(information);
 		// logger.info(information);
 		// System.out.println(information);
-		// setSql(spName);
+		  // setSql(spName);
 		// Iterate through parameter list to declare input and output parameters
 		// required by this Stored Procedure
 		int paramListSize = paramList.size();
