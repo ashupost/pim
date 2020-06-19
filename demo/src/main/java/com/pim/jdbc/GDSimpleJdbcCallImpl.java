@@ -58,18 +58,13 @@ public class GDSimpleJdbcCallImpl extends SimpleJdbcCall {
 		//super.withoutProcedureColumnMetaDataAccess();
 		setReturnResultSet(returnResultSet);
 		//super.addDeclaredRowMapper(returnResultSet, rowMapper);
-		
-		 
-		
+
 		 for (Map.Entry<String, RowMapper<?>> entry : maprowmapper.entrySet()) {
 			 super.addDeclaredRowMapper(entry.getKey(), entry.getValue());
 		 }
-	           
-		
-		final String information = "SP["+ spName +"]  paramList = " + getInParameterNames();
-		logger.debug(information);
+
 		// logger.info(information);
-		// System.out.println(information);
+		// System.out.println(information); 
 		  // setSql(spName);
 		// Iterate through parameter list to declare input and output parameters
 		// required by this Stored Procedure
@@ -79,6 +74,9 @@ public class GDSimpleJdbcCallImpl extends SimpleJdbcCall {
 			// declareParameters((SqlParameter) paramList.get(i));
 			super.addDeclaredParameter((SqlParameter) paramList.get(i));
 		}
+		final String information = "SP["+ spName +"],  paramList=" + getInParameterNames() + ", maprowmapper["+ maprowmapper +"]";
+		logger.info(information);
+
 		super.checkCompiled();
 	}
 

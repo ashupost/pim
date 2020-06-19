@@ -36,7 +36,7 @@ export class Tab3Page {
     this.configService.getConfig_1()
       .subscribe((data: Result) => this.config = {
           error: data['error'],
-          employees:  data['resultList']
+          employees:  data['resultMap']['loginResultSet1']
       });
   }
   

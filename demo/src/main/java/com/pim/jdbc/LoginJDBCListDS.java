@@ -34,7 +34,7 @@ public class LoginJDBCListDS extends GDJDBCAbstractDataService {
 			
 			exportsOutputValueBean = new ResultBean();
 			exportsOutputValueBean.setResult(ResultStatus.SUCCESS);
-			//exportsOutputValueBean.setResultList((List<?>) outputMap.get(bipBatchGenericDAO.getReturnResultSet()));
+			exportsOutputValueBean.setResultList((List<?>) outputMap.get(bipBatchGenericDAO.getReturnResultSet()));
 			exportsOutputValueBean.setResultMap(outputMap);
 			
 			gdTxManager.commitTransaction(inputBean.getTxnStatusMap());
