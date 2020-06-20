@@ -11,6 +11,7 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -30,7 +31,8 @@ import { ModalPageModule } from 'src/pages/modal/modal.module';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AppRoutingModule,
-    ModalPageModule
+    ModalPageModule,
+    ImageCropperModule
     
   ],
   providers: [
