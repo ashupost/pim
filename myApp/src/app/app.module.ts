@@ -33,17 +33,15 @@ import { ModalPageModule } from 'src/pages/modal/modal.module';
     AppRoutingModule,
     ModalPageModule,
     ImageCropperModule
-    
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
     GooglePlus,
     FaceBookLoginService,
-
-
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+   { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
