@@ -38,6 +38,9 @@ export class Tab1Page {
       }
     });
     }
+
+
+    
     public  async phonelogin() {
       let modalPage = await  this.__modalCtrl.create({ component: ModalPage,
         componentProps: { message: '31616692719' },

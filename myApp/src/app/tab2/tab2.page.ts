@@ -11,19 +11,22 @@ import { UserDetails } from '../services/userdetails';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
+  //@ViewChild(Nav) nav: Nav;
   items: Observable<UserDetails[]>;
   myId: string = '';
   myData: Observable<UserDetails>;
   ngOnInit(): void {
-    //this.items = this.__groundFirebaseStoreService.getUsers();
+    this.items = this.__groundFirebaseStoreService.getUsers();
   }
   constructor(private __gas: GroundAuthService,
-    private __afAuth: AngularFireAuth,private __groundFirebaseStoreService: GroundFirebaseStoreService) {
+    private __afAuth: AngularFireAuth,
+    private __groundFirebaseStoreService: GroundFirebaseStoreService) {
       this.__afAuth.authState.subscribe(res => {
       if (res && res.uid) {
         this.myId = res.uid;
       }
     });
+  //  this.items = this.__groundFirebaseStoreService.getUsers();
   }
 
 
