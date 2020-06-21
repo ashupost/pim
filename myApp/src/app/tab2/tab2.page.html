@@ -20,7 +20,7 @@
                 <img *ngIf="!item.photoURL" style="border-radius: 10%;" src="https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg">
               </ion-thumbnail>
               
-              <ion-icon item-end name="disc-outline" [color]="item.status" md="md-disc"></ion-icon>
+              <ion-icon name="disc-outline" [color]="item.status" md="md-disc"></ion-icon>
               <ion-icon item-end *ngIf="item.accountType === 'facebook.com'" color="primary" name="logo-facebook" md="logo-facebook"></ion-icon>
               <ion-icon item-end *ngIf="item.accountType === 'google.com'" color="primary" name="logo-google" md="logo-google"></ion-icon>
               <ion-icon item-end *ngIf="item.accountType === 'phone'" color="primary" name="phone-portrait-outline" md="phone-portrait-outline"></ion-icon>
