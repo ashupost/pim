@@ -52,7 +52,7 @@ export class Tab2Page implements OnInit {
     let data = { user: this.__gas.currentUser, toUserDetails: toUserDetails };
    // this._app.getRootNav().push(MessagesPage, data);
    //this.navctl.setDirection;
-   this.activatedRoute.snapshot.paramMap.get('id');
+   //this.activatedRoute.snapshot.paramMap.get('id');
 
   }
 
