@@ -9,6 +9,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { PipesModule } from '../pipes/pipes.module';
 
+
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -19,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 import { FaceBookLoginService } from './services/facebook-login.service';
 import { ModalPageModule } from 'src/pages/modal/modal.module';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +30,7 @@ import { ModalPageModule } from 'src/pages/modal/modal.module';
     HttpClientModule,
     PipesModule,
     IonicModule.forRoot(),
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyCxjWoBYpJNCtd1wGvNk3n8nEgR4ryvqA8' , libraries: ["places"]}),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
